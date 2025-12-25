@@ -1,6 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.diana.assistant.ua">
 
+    <!-- Основні дозволи -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
@@ -9,8 +11,9 @@
     <application
         android:label="Діана"
         android:allowBackup="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.Diana">
 
+        <!-- Головна Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,11 +23,13 @@
             </intent-filter>
         </activity>
 
+        <!-- Foreground Service для постійної роботи і мікрофона -->
         <service
             android:name=".VoiceForegroundService"
             android:foregroundServiceType="microphone"
             android:exported="false"/>
 
+        <!-- Accessibility Service для взаємодії з іншими додатками -->
         <service
             android:name=".DianaAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
@@ -34,6 +39,7 @@
             </intent-filter>
         </service>
 
+        <!-- Notification Listener для читання сповіщень -->
         <service
             android:name=".DianaNotificationService"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
@@ -44,4 +50,5 @@
         </service>
 
     </application>
+
 </manifest>
